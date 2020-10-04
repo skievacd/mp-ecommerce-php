@@ -1,4 +1,4 @@
-document.querySelector('#btnPagar').addEventListener("click", (e) => {
+/* document.querySelector('#btnPagar').addEventListener("click", (e) => {
     e.preventDefault();
 
     // obtenemos los campos requeridos
@@ -38,3 +38,4 @@ document.querySelector('#btnPagar').addEventListener("click", (e) => {
         }
     }); 
 })
+ */

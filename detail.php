@@ -1,3 +1,90 @@
+<?php
+
+require_once './vendor/autoload.php';
+/* get data from .env */
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+/* access keys */
+$access_token = $_ENV['ACCESS_TOKEN'];
+$public_key = $_ENV['PUBLIC_KEY'];
+$collector_id = $_ENV['COLLECTOR_ID'];
+$integrator_id = $_ENV['INTEGRATOR_ID'];
+
+/* seller user data */
+$user_id = $_ENV['USER_ID'];
+$user_email = $_ENV['USER_EMAIL'];
+$user_password = $_ENV['USER_PASSWORD'];
+
+// Agrega credenciales
+MercadoPago\SDK::setAccessToken($access_token);
+
+// seteamos el integrator-id
+MercadoPago\SDK::setIntegratorId($integrator_id);
+
+// Crea un objeto de preferencia
+$preference = new MercadoPago\Preference();
+
+// Crea un ítem en la preferencia
+$item = new MercadoPago\Item();
+$item->id = '1234';
+$item->title = $_POST["title"];
+$item->description = "Dispositivo móvil de Tienda e-commerce";
+$item->quantity = $_POST["unit"];
+$item->unit_price = $_POST["price"];
+// agregamos el item a la preferencia
+$preference->items = array($item);
+
+// agregamos información del pagador
+$payer = new MercadoPago\Payer();
+$payer->name = "Lalo";
+$payer->surname = "Landa";
+$payer->email = $user_email;
+$payer->phone = array(
+    "area_code" => "11",
+    "number" => "22223333"
+);
+$payer->address = array(
+    "street_name" => "False",
+    "street_number" => 123,
+    "zip_code" => "1111"
+);
+// agregamos el pagador a la preferencia
+$preference->payer = $payer;
+
+// seteamos los medios de pago aceptados
+/* la documentacion propone excluir el metodo de pago "atm", pero el mismo no se obtuvo al hacer un get a https://api.mercadopago.com/v1/payment_methods?public_key=
+    igualmente agregamos la exclusion para seguir la documentacion
+*/
+$preference->payment_methods = array(
+    "excluded_payment_methods" => array(
+        array("id" => "amex")
+    ),
+    "excluded_payment_methods" => array(
+        array("id" => "atm")
+    ),
+    "installments" => 6 // define la cantidad maxima de cuotas a permitir
+);
+
+// agregamos el correo en external_reference, según lo indicado en la guia
+$preference->external_reference = "skievacd@gmail.com";
+// seteamos el autoretorno tras pago aprobado
+$preference->auto_return = "approved";
+$preference->back_urls = array(
+    "success" => $_SERVER['SERVER_NAME'] . "/success.php",
+    "failure" => $_SERVER['SERVER_NAME'] . "/failure.php",
+    "pending" => $_SERVER['SERVER_NAME'] . "/pending.php",
+);
+
+// seteamos el endpoint para las notificaciones de estados de pago
+$preference->notification_url = "./notifications.php";
+
+// registramos la preferencia
+$preference->save();
+
+?>
+
+
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US">
 
@@ -544,7 +631,8 @@
                                             <input id="txtProductAmount" type="hidden" value="<?php echo $_POST['unit'] ?>">
                                         </h3>
                                     </div>
-                                    <button id="btnPagar" type="submit" class="mercadopago-button" formmethod="post">Pagar la compra</button>
+                                    <!-- <button id="btnPagar" type="submit" class="mercadopago-button" formmethod="post">Pagar la compra</button> -->
+                                    <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
                                 </div>
                             </div>
                         </div>
