@@ -16,9 +16,9 @@
             <div class="card">
                 <div class="card-body">
                     <span class="card-title">Pago realizado exitosamente!</span>
-                    <span>Collection ID: <?php if (isset($_GET["collection_id"])) $_GET["collection_id"] ?></span>
-                    <span>External reference: <?php if (isset($_GET["external_reference"])) $_GET["external_reference"] ?></span>
-                    <span>Payment type: <?php if (isset($_GET["payment_type"])) $_GET["payment_type"] ?></span>
+                    <span>Collection ID: <?php if (isset($_GET["collection_id"])) echo $_GET["collection_id"] ?></span>
+                    <span>External reference: <?php if (isset($_GET["external_reference"])) echo $_GET["external_reference"] ?></span>
+                    <span>Payment type: <?php if (isset($_GET["payment_type"])) echo $_GET["payment_type"] ?></span>
                 </div>
                 <div class="card-footer">
                     <a href="./index.php">Ir al inicio</a>
