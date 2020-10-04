@@ -1,6 +1,6 @@
 <?php
 
-require './vendor/autoload.php';
+require_once './vendor/autoload.php';
 
 /* 
 información a enviar si no se ha pasado los campos requeridos. 
@@ -28,7 +28,7 @@ if (isset($_POST["product_name"]) && isset($_POST["product_price"]) && isset($_P
     $user_password = $_ENV['USER_PASSWORD'];
 
     // Agrega credenciales
-    MercadoPago\SDK::setAccessToken($access_token);
+    MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
 
     // Crea un objeto de preferencia
     $preference = new MercadoPago\Preference();
@@ -105,7 +105,7 @@ if (isset($_POST["product_name"]) && isset($_POST["product_price"]) && isset($_P
    // $preference->save();
 
     // seteamos el objeto de retorno
-    $data = ["status" => 200, "msg" => 'exito, redirigiendo a mercado pago!', "preferencia" => $preference, "access_token" => $access_token];
+    $data = ["status" => 200, "msg" => 'exito, redirigiendo a mercado pago!', "preferencia" => $preference];
 
     // respuesta
     echo json_encode($data);
