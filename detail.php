@@ -77,7 +77,7 @@ $preference->back_urls = array(
 );
 
 // seteamos el endpoint para las notificaciones de estados de pago
-$preference->notification_url = "./notifications.php?source_news=webhooks";
+$preference->notification_url = $_SERVER['SERVER_NAME'] . "/notifications.php?source_news=webhooks";
 
 // registramos la preferencia
 $preference->save();
