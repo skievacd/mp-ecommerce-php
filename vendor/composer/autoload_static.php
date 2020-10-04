@@ -7,6 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInitcfb9cd2724988acd7b937fc37c277327
 {
     public static $files = array (
+        '3a37ebac017bc098e9a86b35401e7a68' => __DIR__ . '/..' . '/mongodb/mongodb/src/functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
@@ -22,10 +23,16 @@ class ComposerStaticInitcfb9cd2724988acd7b937fc37c277327
         'P' => 
         array (
             'PhpOption\\' => 10,
+            'PackageVersions\\' => 16,
         ),
         'M' => 
         array (
+            'MongoDB\\' => 8,
             'MercadoPago\\' => 12,
+        ),
+        'J' => 
+        array (
+            'Jean85\\' => 7,
         ),
         'G' => 
         array (
@@ -62,6 +69,14 @@ class ComposerStaticInitcfb9cd2724988acd7b937fc37c277327
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
+        'PackageVersions\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/package-versions-deprecated/src/PackageVersions',
+        ),
+        'MongoDB\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mongodb/mongodb/src',
+        ),
         'MercadoPago\\' => 
         array (
             0 => __DIR__ . '/..' . '/mercadopago/dx-php/src/MercadoPago',
@@ -69,6 +84,10 @@ class ComposerStaticInitcfb9cd2724988acd7b937fc37c277327
             2 => __DIR__ . '/..' . '/mercadopago/dx-php/src/MercadoPago/Generic',
             3 => __DIR__ . '/..' . '/mercadopago/dx-php/src/MercadoPago/Entities',
             4 => __DIR__ . '/..' . '/mercadopago/dx-php/src/MercadoPago/Entities/Shared',
+        ),
+        'Jean85\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/jean85/pretty-package-versions/src',
         ),
         'GrahamCampbell\\ResultType\\' => 
         array (

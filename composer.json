@@ -3,6 +3,7 @@
     "type": "project",
     "require": {
         "mercadopago/dx-php": "^2.1",
-        "vlucas/phpdotenv": "^5.2"
+        "vlucas/phpdotenv": "^5.2",
+        "mongodb/mongodb": "^1.7"
     }
 }

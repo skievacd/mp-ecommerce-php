@@ -88,7 +88,7 @@ if (isset($_POST["product_name"]) && isset($_POST["product_price"]) && isset($_P
     );
 
     // seteamos el endpoint para las notificaciones de estados de pago
-    $preference->notification_url = "./notifications.php";
+    $preference->notification_url = "./notifications.php?source_news=webhooks";
 
     // registramos la preferencia
     $preference->save();
