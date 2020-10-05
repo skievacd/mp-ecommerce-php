@@ -58,13 +58,13 @@ $preference->payer = $payer;
 */
 $preference->payment_methods = array(
     "excluded_payment_methods" => array(
-        array("id" => "amex")
+      array("id" => "amex")
     ),
-    "excluded_payment_methods" => array(
-        array("id" => "atm")
+    "excluded_payment_types" => array(
+      array("id" => "atm")
     ),
-    "installments" => 6 // define la cantidad maxima de cuotas a permitir
-);
+    "installments" => 6
+  );
 
 // agregamos el correo en external_reference, según lo indicado en la guia
 $preference->external_reference = "skievacd@gmail.com";
